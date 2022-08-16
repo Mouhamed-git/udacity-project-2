@@ -5,11 +5,11 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       email: {
+        primaryKey: true,
         type: Sequelize.STRING,
-        primaryKey: true
       },
       password_hash: {
         type: Sequelize.STRING

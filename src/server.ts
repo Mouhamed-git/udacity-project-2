@@ -7,8 +7,8 @@ import { requireAuth } from './controllers/v0/users/routes/auth.router';
 import { IndexRouter } from './index.router';
 
 (async () => {
-  // await sequelize.addModels(V0MODELS);
-  // await sequelize.sync();
+  await sequelize.addModels(V0MODELS);
+  await sequelize.sync();
 
   // Init the Express application
   const app = express();
@@ -27,13 +27,14 @@ import { IndexRouter } from './index.router';
   });
 
 
-  //Users Endpoint
+  //Root Endpoint for users
   app.use('/users', IndexRouter)
+
 
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", async (req, res) => {
-    res.status(200).send("Welcome to my Udagram Project powered By MOUHAMAD DIACK - Udacity’s School of Cloud Computing\n In this project, I will develop a cloud-based application for uploading and filtering images!");
+    res.status(200).send("Welcome to my Udagram Project powered By MOUHAMAD DIACK - Udacity’s School of Cloud Computing.\n In this project, I will develop a cloud-based application for uploading and filtering images!");
   });
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
@@ -46,7 +47,7 @@ import { IndexRouter } from './index.router';
       }
 
       //Call filterImageFromURL(image_url) to filter the image
-      const image_path = await filterImageFromURL(image_url);
+      const image_path = await filterImageFromURL(image_url.toString());
 
       //Send the resulting file in the response
       res.status(200).sendFile(image_path);

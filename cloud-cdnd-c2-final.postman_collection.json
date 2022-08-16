@@ -7,50 +7,134 @@
 	"item": [
 		{
 			"name": "Public",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+			"item": [
+				{
+					"name": "/ root rest api",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{HOST}}",
+							"host": [
+								"{{HOST}}"
+							]
+						},
+						"description": "Register new user"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8082/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8082",
-					"path": [
-						"/"
-					]
+				{
+					"name": "/user/auth/register valid registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"diack@udacity.com\",\n\t\"password\":\"Passer123\"\n}"
+						},
+						"url": {
+							"raw": "http://{{HOST}}/users/auth/register",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Register new user"
+					},
+					"response": []
+				},
+				{
+					"name": "/user/auth/login valid login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"diack@udacity.com\",\n\t\"password\":\"Passer123\"\n}"
+						},
+						"url": {
+							"raw": "http://{{HOST}}/users/auth/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Authenticate new user"
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Filtered Image",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://{{HOST}}/filteredimage?image_url=https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg",
-					"protocol": "http",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"filteredimage"
-					],
-					"query": [
-						{
-							"key": "image_url",
-							"value": "https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg"
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "/filteredimage?image_url={{imageUrl}} filtered image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{HOST}}/filteredimage?image_url=https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"filteredimage"
+							],
+							"query": [
+								{
+									"key": "image_url",
+									"value": "https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg"
+								}
+							],
+							"description": "Filtered image"
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "/users all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{HOST}}/users",
+							"protocol": "http",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Return all users"
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [

@@ -8,14 +8,10 @@ const router: Router = Router();
 //Root Endpoint for Authentification
 router.use('/auth', AuthRouter);
 
-router.get('/', async (req: Request, res: Response) => {
-    res.send("User endpoint");
-});
-
-router.get('/:id', requireAuth, async (req: Request, res: Response) => {
-    let { id } = req.params;
-    const user = await User.findByPk(id);
-    res.status(200).send(user);
+//Get all users
+router.get('/', requireAuth, async (req: Request, res: Response) => {
+    const users = await User.findAndCountAll({ order: [['email', 'DESC']] });
+    res.status(200).send(users);
 });
 
 export const UserRouter: Router = router;

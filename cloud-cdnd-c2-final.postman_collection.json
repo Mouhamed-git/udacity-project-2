@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "02d76e6d-f702-49a0-8450-628dc1f93ad7",
+		"_postman_id": "a3da0fb2-0748-44be-8b4b-26e794013a3c",
 		"name": "cloud-cdnd-c2-final",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -129,10 +129,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://{{HOST}}/users",
+							"raw": "http://{{PROD_HOST}}/users",
 							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"{{PROD_HOST}}"
 							],
 							"path": [
 								"users"

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "231fea0c-c318-49fa-880b-aac57575eceb",
+		"_postman_id": "02d76e6d-f702-49a0-8450-628dc1f93ad7",
 		"name": "cloud-cdnd-c2-final",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,12 +14,37 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}",
+							"raw": "http://{{PROD_HOST}}",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"{{PROD_HOST}}"
 							]
 						},
 						"description": "Register new user"
+					},
+					"response": []
+				},
+				{
+					"name": "/filteredimage?image_url={{imageUrl}} filtered image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{PROD_HOST}}/filteredimage?image_url=https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg",
+							"protocol": "http",
+							"host": [
+								"{{PROD_HOST}}"
+							],
+							"path": [
+								"filteredimage"
+							],
+							"query": [
+								{
+									"key": "image_url",
+									"value": "https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -40,9 +65,10 @@
 							"raw": "{\n\t\"email\":\"diack@udacity.com\",\n\t\"password\":\"Passer123\"\n}"
 						},
 						"url": {
-							"raw": "{{HOST}}/users/auth/register",
+							"raw": "http://{{PROD_HOST}}/users/auth/register",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"{{PROD_HOST}}"
 							],
 							"path": [
 								"users",
@@ -71,9 +97,10 @@
 							"raw": "{\n\t\"email\":\"mouhamad.diack@udacity.com\",\n\t\"password\":\"Passer123\"\n}"
 						},
 						"url": {
-							"raw": "{{HOST}}/users/auth/login",
+							"raw": "http://{{PROD_HOST}}/users/auth/login",
+							"protocol": "http",
 							"host": [
-								"{{HOST}}"
+								"{{PROD_HOST}}"
 							],
 							"path": [
 								"users",
@@ -90,36 +117,6 @@
 		{
 			"name": "Authorization",
 			"item": [
-				{
-					"name": "/filteredimage?image_url={{imageUrl}} filtered image",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{ACCESS_TOKEN}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "http://{{HOST}}/filteredimage?image_url=https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg",
-							"protocol": "http",
-							"host": [
-								"{{HOST}}"
-							],
-							"path": [
-								"filteredimage"
-							],
-							"query": [
-								{
-									"key": "image_url",
-									"value": "https://rare-gallery.com/thumbs/4522086-parrot-parrot-security-linux-debian-hacking.jpg"
-								}
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "/users all users",
 					"request": {
@@ -170,13 +167,12 @@
 	],
 	"variable": [
 		{
-			"key": "HOST",
+			"key": "DEV_HOST",
 			"value": "localhost:8082",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
-			"key": "HOST",
+			"key": "PROD_HOST",
 			"value": "mouhamad-image-filter-dev.us-east-1.elasticbeanstalk.com",
 			"type": "default"
 		},

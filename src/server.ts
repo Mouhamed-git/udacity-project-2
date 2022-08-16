@@ -38,7 +38,7 @@ import { IndexRouter } from './index.router';
   });
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
-  app.get("/filteredimage/", requireAuth, async (req, res) => {
+  app.get("/filteredimage/", async (req, res) => {
     try {
       //Check if the image_url query is valide
       const { image_url } = req.query;
